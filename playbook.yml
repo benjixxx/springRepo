@@ -15,6 +15,7 @@
       repository_url: http://localhost:8081/repository/nexusrep/
       username: admin 
       password: admin
+      version: 16.0
       dest: /opt/tomcat/webapps
  
      
