@@ -9,7 +9,7 @@
   
   tasks:
   - name: download maven artifacts
-    maven_artifacts:
+    maven_artifact:
       group_id: org.jenkins.main
       artifact_id: jenkins-war
       repository_url: http://localhost:8081/repository/nexusrep/
