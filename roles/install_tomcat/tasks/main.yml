@@ -1,0 +1,7 @@
+---
+# tasks file for install_apache
+- name: installation
+  apt:
+    name: tomcat
+    state: latest
+    

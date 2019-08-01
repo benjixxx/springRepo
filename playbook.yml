@@ -2,21 +2,12 @@
 - name: "[Deploy-war Ansible]"
   hosts: all
   become: yes
-  vars:
-    non_ssl_connector_port: 9191
+  #vars:
+    #non_ssl_connector_port: 9191
   roles:
-    - robertdebock.tomcat
-  
-  tasks:
-  - name: download maven artifacts
-    maven_artifact:
-      group_id: org.jenkins.main
-      artifact_id: jenkins-war
-      repository_url: http://localhost:8081/repository/nexusrep/
-      username: admin 
-      password: admin
-      version: 16.0
-      dest: /opt/tomcat/webapps
+    - install_tomcat
+    - config_tomcat
+   
  
      
       

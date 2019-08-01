@@ -1,0 +1,17 @@
+---
+# tasks file for config_apache
+- name: download maven artifact
+  maven_artifact:
+    group_id: org.jenkins.main 
+    artifact_id: jenkins-war
+    version: latest
+    extension: war
+    repository_url: 'http://172.16.30.102:8081/repository/webapp-master/'
+    username: admin
+    password: admin
+    dest: webapps/
+    
+- name: demarrage d un service
+  service:
+    name: tomcat
+    state: started
