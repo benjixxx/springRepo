@@ -8,14 +8,14 @@
     - robertdebock.tomcat
   
   tasks:
-  #- name: download maven artifacts
-  maven_artifacts:
-    group_id: org.jenkins.main
-    artifact_id: jenkins-war
-    repository_url: http://localhost:8081/repository/nexusrep/
-    username: admin 
-    password: admin
-    dest: /opt/tomcat/webapps
+  - name: download maven artifacts
+    maven_artifacts:
+      group_id: org.jenkins.main
+      artifact_id: jenkins-war
+      repository_url: http://localhost:8081/repository/nexusrep/
+      username: admin 
+      password: admin
+      dest: /opt/tomcat/webapps
  
      
       
