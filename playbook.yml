@@ -7,7 +7,8 @@
     - robertdebock.tomcat
   
   tasks:
-    - maven_artifacts:
+    - name: download maven artifacts
+      maven_artifacts:
         group_id: org.jenkins.main
         artifact_id: jenkins-war
         repository_url: http://localhost:8081/repository/nexusrep/
