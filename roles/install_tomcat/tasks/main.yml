@@ -1,6 +1,10 @@
 ---
 # tasks file for install_apache
 
+- name: make an ssh key for jenkins user
+  user: name=jenkins
+        generate_ssh_key=yes
+
 - name: Update and upgrade apt packages
   apt:
     upgrade: dist
