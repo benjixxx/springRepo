@@ -1,59 +1,59 @@
 ---
 # tasks file for install_apache
-- name: installation
-  - name: Update and upgrade apt packages
-    apt:
-      upgrade: yes
-      update_cache: yes
-      cache_valid_time: 86400 #One day
 
-  - name: install JDK 11
+- name: Update and upgrade apt packages
     apt:
-      name: openjdk-11-jdk
-      state: present
+        upgrade: yes
+        update_cache: yes
+        cache_valid_time: 86400 #One day
 
-  - name: add tomcat group
+- name: install JDK 11
+    apt:
+        name: openjdk-11-jdk
+        state: present
+
+- name: add tomcat group
     group:
-      name: tomcat
+        name: tomcat
 
-  - name: add tomcat user
+- name: add tomcat user
     user:
-      name: tomcat
-      group: tomcat
-      home: /user/share/tomcat
-      createhome: no
+        name: tomcat
+        group: tomcat
+        home: /user/share/tomcat
+        createhome: no
 
-  - name: create /opt/tomcat directory
+- name: create /opt/tomcat directory
     file:
-      path: /opt/tomcat
-      state: directory
-      mode: 0755
+        path: /opt/tomcat
+        state: directory
+        mode: 0755
 
-  - name: download & unarchive
+- name: download & unarchive
     unarchive:
-      src: http://apache.cs.utah.edu/tomcat/tomcat-9/v9.0.16/bin/apache-tomcat-9.0.16.tar.gz
-      dest: /opt/tomcat
-      remote_src: yes
-      extra_opts: [--strip-components=1]
+        src: http://apache.cs.utah.edu/tomcat/tomcat-9/v9.0.16/bin/apache-tomcat-9.0.16.tar.gz
+        dest: /opt/tomcat
+        remote_src: yes
+        extra_opts: [--strip-components=1]
 
-  - name: Change ownership
+- name: Change ownership
     file:
-      path: /opt/tomcat
-      owner: tomcat
-      group: tomcat
-      mode: "u+rwx,g+rx,o=rx"
-      recurse: yes
-      state: directory
+        path: /opt/tomcat
+        owner: tomcat
+        group: tomcat
+        mode: "u+rwx,g+rx,o=rx"
+        recurse: yes
+        state: directory
 
-  - name: Copy Tomcat service from local to remote
+- name: Copy Tomcat service from local to remote
     copy:
-       src: tomcat.service
-       dest: /etc/systemd/system/
-       mode: 0755
+        src: tomcat.service
+        dest: /etc/systemd/system/
+        mode: 0755
 
-  - name: Start and enable Tomcat service
+- name: Start and enable Tomcat service
     systemd:
-      name: tomcat
-      state: started
-      enabled: true
-      daemon_reload: true
+        name: tomcat
+        state: started
+        enabled: true
+        daemon_reload: true

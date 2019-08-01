@@ -11,7 +11,3 @@
     password: admin
     dest: webapps/
     
-- name: demarrage d un service
-  service:
-    name: tomcat
-    state: started
