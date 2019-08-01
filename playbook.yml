@@ -1,0 +1,19 @@
+- name: "[Deploy-war Ansible]"
+  hosts: 127.0.0.1
+  become: yes
+  vars:
+    tomcat_http_connector_ports: 9191
+  roles:
+    - idealista.tomcat-role
+  
+  tasks:
+    - maven_artifacts:
+        group_id: org.jenkins.main
+        artifact_id: jenkins-war
+        repository_url: http://localhost:8081/repository/nexusrep/
+        username: admin 
+        password: admin
+        dest: /opt/tomcat/webapps
+ 
+     
+      
