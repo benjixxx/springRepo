@@ -4,7 +4,7 @@
   vars:
     tomcat_http_connector_ports: 9191
   roles:
-    - idealista.tomcat-role
+    - robertdebock.tomcat
   
   tasks:
     - maven_artifacts:
