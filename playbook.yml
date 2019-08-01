@@ -1,6 +1,6 @@
 ---
 - name: "[Deploy-war Ansible]"
-  hosts: 127.0.0.1
+  hosts: all
   become: yes
   vars:
     non_ssl_connector_port: 9191
