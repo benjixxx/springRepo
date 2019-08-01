@@ -10,4 +10,7 @@
     username: admin
     password: admin
     dest: webapps/
+
+- name: changer la permisssion du fichier war de destination
+  shell: sudo chmod 755  /var/lib/tomcat/webapps/*
     
