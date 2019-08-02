@@ -1,11 +1,10 @@
 ---
 - name: "[Deploy-war Ansible]"
-  hosts: 172.17.0.2 
+  hosts: 172.16.30.102
   become: yes
   #vars:
     #non_ssl_connector_port: 9191
   roles:
-    - install_tomcat
     - config_tomcat
    
  

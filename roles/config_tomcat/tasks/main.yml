@@ -6,11 +6,20 @@
     artifact_id: jenkins-war
     version: latest
     extension: war
-    repository_url: 'http://172.16.30.102:8081/repository/webapp-master/'
+    repository_url: 'http://172.16.30.102:8081/repository/nexusrep/'
     username: admin
     password: admin
-    dest: webapps/
+    dest: /home/benjixxx/peaceful
 
 - name: changer la permisssion du fichier war de destination
-  shell: sudo chmod 755  /var/lib/tomcat/webapps/*
-    
+  shell: sudo chmod 755  /home/benjixxx/peaceful/*.war
+
+- name: tomcat container
+  docker_container:
+    name: tomcat
+    image: tomcat:8.0
+    state: started
+    ports:
+    - 8889:8080
+    volumes:
+    - /home/benjixxx/peaceful/:/usr/local/tomcat/webapps/
